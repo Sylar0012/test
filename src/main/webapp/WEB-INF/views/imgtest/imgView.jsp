@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>юн╣╕╫╨</h2>
 <ul>
 	<li>
-	<a href="/imgtest/imgView">юл╧лаЖ ╬В╥н╣Е ев╫╨ф╝╠╦©╙</a>
+	<a href="/imgtest/imgSaveForm">Л²╢К╞╦Л╖─ Л≈┘К║°К⌠°</a>
 	</li>
 </ul>
+<br/>
+<br/>
+<br/>
+<div>
+<h2>Л²╢К╞╦Л╖─ Л╤°К═╔</h2>
+<img src="${img.imgName}">
+</div>
 </body>
 </html>
