@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.test.domain.img.Img;
 import site.metacoding.test.domain.img.ImgDao;
+import site.metacoding.test.domain.img.ImgDto;
 
 @RequiredArgsConstructor
 @Service
@@ -20,9 +21,9 @@ public class ImgService {
 	
 	private final ImgDao imgDao;
 	
-	public void 사진저장(String imgName) {		
+	public void 사진저장(Img img) {		
 
-		 imgDao.save(imgName);
+		 imgDao.save(img);
 	}
 	
 	public Img 아이디로사진찾기(Integer id) {

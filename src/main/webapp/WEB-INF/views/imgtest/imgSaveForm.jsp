@@ -2,23 +2,27 @@
 	pageEncoding="UTF-8"%>
 	
 <!DOCTYPE html>
-
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-   <form method="post" action="/imgtest/img" enctype="multipart/form-data">
+   <form enctype="multipart/form-data" id ="fileUploadForm">
 		<div class="form-group">
-			<div>
-   				<form method="post" action="/upload" enctype="multipart/form-data">
-            <input type="file" name="file" />
-          <button type="submit">파일전송</button>
-     </form>
-</div><%-- form-group--%>
+			<input id="title" type="text" placeholder="제목">
+			<br/>
+			<br/>
+            <input type="file" id ="file" />
+			<br/>
+			<br/>
+			<input id="content" type ="text" placeholder="내용">
+			<br/>
+			<br/>
+         	<button type="button" id="btnSave">작성완료</button>
+		</div><%-- form-group--%>
+	</form>
 </body>
 <script>
 
@@ -28,21 +32,25 @@
 
 
 	function Save(){
-		let data = new FormData();
-		
-		console.log($("#inputFile"))
-		
-		data.append('files',$("#inputFile"))
 
+		let formData = new FormData();
+	
+		let data ={
+
+		}
+
+		formData.append('title',$("#title").val());
+		formData.append('content',$("#content").val());
+		formData.append('file', $("#file")[0].files[0]);
+
+		formData.append('key', new Blob([ JSON.stringify(data) ], {type : "application/json"}));
+		
 		$.ajax("/imgtest/img",{
 			type : "POST",
-			dataType :"json",
-            processData: false,
-            contentType: false,
-			data: JSON.stringify(data),
-			headers: {
-				"Content-Type": "application/boundary; charset=utf-8"
-			}
+			data : formData,
+			processData: false,    
+       		contentType: false, 
+			enctype : 'multipart/form-data'
 		}).done((res) => {
 			if (res.code == 1) {
 				alert("이미지 등록 성공");

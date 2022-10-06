@@ -17,7 +17,11 @@
 <br/>
 <div>
 <h2>이미지 출력</h2>
-<img src="${img.imgName}">
+<br/>
+<h3>${img.title}</h3>
+<img src="/img/${img.imgName}">
+<p>${img.content}</p>
+<p>${img.createdAt}</p>
 </div>
 </body>
 </html>
